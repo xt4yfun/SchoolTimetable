@@ -84,13 +84,11 @@
 ### Key Features <a name="Screenshots"></a>
 <h2>Screenshots of the Project 📸</h2>
 <br>
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
 
-<h3 align='center'>Dashboard Page 🏡</h3>
-
-
-![ScreenShot](images/2.png)
-
+<p align="center">
+  <img src="./images/2.png" alt="Screenshot 1" width="49%" />
+  <img src="./images/15.png" alt="Screenshot 2" width="49%" />
+</p>
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
