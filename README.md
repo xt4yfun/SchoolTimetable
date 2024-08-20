@@ -87,9 +87,10 @@
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 <h3 align='center'>Dashboard Page 🏡</h3>
+  ![screenshot](images/2.png)
 <div align='center'>
-<img src='![image](images/2.png)
-'/>
+
+
 </div>
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
