@@ -43,7 +43,6 @@
     <li><a href="#">React  </a></li>
     <li><a href="#">Tailwindcss </a></li>
     <li><a href="#">sweetalert2 </a></li>
-    <li><a href="#">chart.js </a></li>
     <li><a href="#">Axios </a></li>
     
   </ul>
