@@ -6,7 +6,7 @@ function Nav(){
 return(
     <nav className="border bg-white p-4 flex justify-between items-center">
         <Link to="/Admin/">
-            <div className="text-indigo-500 text-2xl"><strong>School Timetable</strong></div>
+            <div className="text-indigo-500 text-2xl"><strong>Ders Programı</strong></div>
         </Link>
         <div className="flex items-center space-x-4">
             <div className="flex ">
