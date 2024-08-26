@@ -1,9 +1,6 @@
 import { useParams } from "react-router-dom";
 import AdminLayout from "../../layouts/AdminLayout";
-import Domain from "../../Api/Api";
-import { AuthToken } from "../../Api/Api";
 import { useState, useEffect } from 'react';
-import axios from "axios";
 import Swal from "sweetalert2";
 import Loading from "../../layouts/Loading";
 import { getIDAcademics, deleteAcademics } from '../../Api/Service/AcademicsService';

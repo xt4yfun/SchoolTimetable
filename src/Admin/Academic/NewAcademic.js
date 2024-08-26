@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import Swal from 'sweetalert2';
 import AdminLayout from '../../layouts/AdminLayout';
-import Loading from '../../layouts/Loading';
 import { addAcademics } from '../../Api/Service/AcademicsService';
 
 function AddAcademic() {

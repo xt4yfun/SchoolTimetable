@@ -17,6 +17,7 @@ import ClassCourses from "./Admin/ClassCourses/ClassCourses";
 import ScheduleSetting from "./Admin/ScheduleSetting/ScheduleSetting";
 import Setting from "./Admin/Setting/Setting";
 import Timetable from "./Admin/Timetable/Timetable";
+import UsersSetting from "./Admin/UsersSetting/UsersSetting";
 // AuthToken
 import { Logout } from "./Api/Api";
 import NotFound from "./layouts/PageNotFound";
@@ -63,6 +64,8 @@ function App() {
         <Route path="/Admin/Timetable" element={isAuthenticated ? <Timetable /> : Redirect} />
         {/* manage Setting */}
         <Route path="/Admin/Setting" element={isAuthenticated ? <Setting /> : Redirect} />
+        {/* manage Users Setting */}
+        <Route path="/Admin/UsersSetting" element={isAuthenticated ? <UsersSetting /> : Redirect} />
         <Route path="*" element={<NotFound />} />
 
 

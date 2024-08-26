@@ -11,8 +11,9 @@ class AxiosManager {
         this.client.interceptors.request.use(
             config => {
                 // Bearer token'ı başlığa ekle
-                if (this.token) {
-                    config.headers['Authorization'] = `Bearer ${AuthToken()}`;
+                const token = AuthToken();
+                if (token) {
+                    config.headers['Authorization'] = `Bearer ${token}`;
                 }
                 console.log('Request:', config);
                 return config;
@@ -30,7 +31,7 @@ class AxiosManager {
                 return response;
             },
             error => {
-                console.error('Response error:', error);
+                console.error('Response error:', error.message);
                 return Promise.reject(error);
             }
         );

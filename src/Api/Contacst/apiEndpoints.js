@@ -58,6 +58,27 @@ const API_ENDPOINTS = {
       DELETEALL: `${BASE_URL}${process.env.REACT_APP_TIMETABLE_ENDPOINT}/deleteAll`,
       DELETECLASS: `${BASE_URL}${process.env.REACT_APP_TIMETABLE_ENDPOINT}/deleteClass`,
     },
+    PERMISSIONROLE: {
+      ADD: `${BASE_URL}${process.env.REACT_APP_PERMISSIONROLE_ENDPOINT}`,
+      DELETE: `${BASE_URL}${process.env.REACT_APP_PERMISSIONROLE_ENDPOINT}`,
+      GETALL: `${BASE_URL}${process.env.REACT_APP_PERMISSIONROLE_ENDPOINT}`,
+      GET: `${BASE_URL}${process.env.REACT_APP_PERMISSIONROLE_ENDPOINT}/Get`,
+      GETROLE: `${BASE_URL}${process.env.REACT_APP_PERMISSIONROLE_ENDPOINT}/GetRole`,
+      GETPERM: `${BASE_URL}${process.env.REACT_APP_PERMISSIONROLE_ENDPOINT}/GetPerm`,
+    },
+    ROLE: {
+      ADD: `${BASE_URL}${process.env.REACT_APP_ROLE_ENDPOINT}`,
+      DELETE: `${BASE_URL}${process.env.REACT_APP_ROLE_ENDPOINT}`,
+      GET: `${BASE_URL}${process.env.REACT_APP_ROLE_ENDPOINT}`,
+    },
+    ROLEUSER: {
+      ADD: `${BASE_URL}${process.env.REACT_APP_ROLEUSER_ENDPOINT}`,
+      DELETE: `${BASE_URL}${process.env.REACT_APP_ROLEUSER_ENDPOINT}`,
+      GET: `${BASE_URL}${process.env.REACT_APP_ROLEUSER_ENDPOINT}`,
+      GETID: `${BASE_URL}${process.env.REACT_APP_ROLEUSER_ENDPOINT}/Get`,
+      GETUSER: `${BASE_URL}${process.env.REACT_APP_ROLEUSER_ENDPOINT}/GetUser`,
+      GETROLE: `${BASE_URL}${process.env.REACT_APP_ROLEUSER_ENDPOINT}/GetRole`,
+    },
   };
   
   export default API_ENDPOINTS;

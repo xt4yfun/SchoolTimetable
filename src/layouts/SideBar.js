@@ -1,6 +1,6 @@
 import React from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faHome, faGraduationCap, faBook,faCog,faUserClock, faUser,faTable, faUsers, faSignOutAlt,faAddressBook } from "@fortawesome/free-solid-svg-icons";
+import { faHome, faGraduationCap, faBook,faCog,faUserClock,faUserGear, faUser,faTable, faUsers, faSignOutAlt,faAddressBook } from "@fortawesome/free-solid-svg-icons";
 import { Link, useLocation } from "react-router-dom";
 
 function SideBar() {
@@ -16,6 +16,7 @@ function SideBar() {
     { to: "/Admin/ScheduleSetting", icon: faUserClock, label: "Ders Program Ayarı" },
     { to: "/Admin/Timetable", icon: faTable, label: "Ders Programı" },
     { to: "/Admin/Setting", icon: faCog, label: "Ayarlar" },
+    { to: "/Admin/UsersSetting", icon: faUserGear, label: "Rol ve İzin" },
     { to: "/Logout", icon: faSignOutAlt, label: "Çıkış Yap" },
   ];
 
