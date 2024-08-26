@@ -287,9 +287,9 @@ function AddStudent() {
                                 type="number"
                                 id="lessonDuration"
                                 name="lessonDuration"
-                                min="1"
-                                max="7"
-                                step="1"
+                                min="0"
+                                max="60"
+                                step="10"
                                 value={formData.lessonDuration}
                                 onChange={handleChange}
                                 required
