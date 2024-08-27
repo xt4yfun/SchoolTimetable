@@ -7,19 +7,19 @@ export const addPermRole = (Data) => {
     return axiosManager.post(API_ENDPOINTS.PERMISSIONROLE.ADD,Data);
 };
   
-export const deletePermRole = (rolId, permId) => {
-    return axiosManager.delete(`${API_ENDPOINTS.PERMISSIONROLE.DELETE}?rolid=${rolId}&permId=${permId}`);
+export const deletePermRole = (ID) => {
+    return axiosManager.delete(`${API_ENDPOINTS.PERMISSIONROLE.DELETE}?id=${ID}`);
  };
 
 export const getAllPR = () => {
     return axiosManager.get(API_ENDPOINTS.PERMISSIONROLE.GETALL);
 };
   
-export const getId = (ID) => {
-    return  axiosManager.get(`${API_ENDPOINTS.PERMISSIONROLE.GET}?id=${ID}`);
+export const getId = (rolId,permId) => {
+    return  axiosManager.get(`${API_ENDPOINTS.PERMISSIONROLE.GET}?rolId=${rolId}&permId=${permId}`);
 };
   
-export const getRole = (ID) => {
+export const PermgetRole = (ID) => {
     return  axiosManager.get(`${API_ENDPOINTS.PERMISSIONROLE.GETROLE}?id=${ID}`);
 };
   

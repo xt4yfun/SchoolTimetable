@@ -82,6 +82,11 @@ const API_ENDPOINTS = {
     PERM: {
       GET: `${BASE_URL}${process.env.REACT_APP_PERM_ENDPOINT}`,
     },
+    USER: {
+      GET: `${BASE_URL}${process.env.REACT_APP_USER_ENDPOINT}`,
+      DELETE: `${BASE_URL}${process.env.REACT_APP_USER_ENDPOINT}`,
+      UPDATE: `${BASE_URL}${process.env.REACT_APP_USER_ENDPOINT}`,
+    },
   };
   
   export default API_ENDPOINTS;
