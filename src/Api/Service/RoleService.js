@@ -8,9 +8,9 @@ export const addRole = (Data) => {
 };
   
 export const deleteRole = (ID) => {
-  return  axiosManager.put(`${API_ENDPOINTS.ROLE.DELETE}?roleid=${ID}`);
+  return  axiosManager.delete(`${API_ENDPOINTS.ROLE.DELETE}?roleid=${ID}`);
 };
 
 export const getAll = () => {
-    return axiosManager.post(API_ENDPOINTS.ROLE.GET);
+    return axiosManager.get(API_ENDPOINTS.ROLE.GET);
 };

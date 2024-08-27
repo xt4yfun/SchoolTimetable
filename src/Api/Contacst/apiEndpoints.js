@@ -79,6 +79,9 @@ const API_ENDPOINTS = {
       GETUSER: `${BASE_URL}${process.env.REACT_APP_ROLEUSER_ENDPOINT}/GetUser`,
       GETROLE: `${BASE_URL}${process.env.REACT_APP_ROLEUSER_ENDPOINT}/GetRole`,
     },
+    PERM: {
+      GET: `${BASE_URL}${process.env.REACT_APP_PERM_ENDPOINT}`,
+    },
   };
   
   export default API_ENDPOINTS;
