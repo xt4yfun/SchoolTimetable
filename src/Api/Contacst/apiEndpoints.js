@@ -87,6 +87,10 @@ const API_ENDPOINTS = {
       DELETE: `${BASE_URL}${process.env.REACT_APP_USER_ENDPOINT}`,
       UPDATE: `${BASE_URL}${process.env.REACT_APP_USER_ENDPOINT}`,
     },
+    AUTH: {
+      LOGIN: `${BASE_URL}${process.env.REACT_APP_AUTH_ENDPOINT}/login`,
+      REGISTER: `${BASE_URL}${process.env.REACT_APP_AUTH_ENDPOINT}/register`,
+    },
   };
   
   export default API_ENDPOINTS;

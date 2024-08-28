@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import axios from "axios";
-// import { useNavigate } from "react-router-dom"; // Use useNavigate for React Router v6
+import { useNavigate } from 'react-router-dom';
+
 
 import Domain from "../Api/Api";
 
@@ -9,6 +10,14 @@ function Login() {
   const [password, setPassword] = useState(""); // Şifre giriş kısmı
   const [error, setError] = useState(null);
   // const navigate = useNavigate(); // useNavigate fonksiyonu ile yönlendirme
+
+
+  const navigate = useNavigate();
+
+  const handleClick = (event) => {
+    event.preventDefault(); // Sayfa yenilemesini engelle
+    navigate('/Register');
+  };
 
   const handleLogin = async (e) => {
     e.preventDefault();
@@ -22,9 +31,6 @@ function Login() {
 
       // Token'ı sessionStorage'a kaydet
       sessionStorage.setItem('authToken', authToken);
-
-
-
       // Yönlendirme
       window.location.href = "http://localhost:3000/Admin";
 
@@ -88,23 +94,23 @@ function Login() {
                 </button>
                 
               </form>
-              {/* <hr className="my-8" />
-              <p className="mt-4">
+              <hr className="my-8" />
+              {/* <p className="mt-4">
                 <a
                   className="text-sm font-medium text-purple-600 hover:underline"
                   href="./forgot-password.html"
                 >
                   Forgot your password?
                 </a>
-              </p>
-              <p className="mt-1">
-                <a
-                  className="text-sm font-medium text-purple-600 "
-                  href="./create-account.html"
-                >
-                  Create account
-                </a>
               </p> */}
+              <p className="mt-1">
+                <button 
+                  className="text-sm font-medium text-purple-600 "
+                  onClick={handleClick}
+                >
+                  Hesap Oluştur
+                </button>
+              </p> 
             </div>
           </div>
         </div>
