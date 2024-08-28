@@ -7,37 +7,12 @@ import { Link } from "react-router-dom";
 import Swal from "sweetalert2";
 import Loading from "../../layouts/Loading";
 import { getStudent, getStudentClass, deleteStudent } from '../../Api/Service/StudentService';
-import { getClass} from '../../Api/Service/ClassService';
+import { getClass } from '../../Api/Service/ClassService';
 
-function StudentData({ studentData, currentPage, itemsPerPage, setStudentData, fetchStudentData }) {
+function StudentData({ studentData, currentPage, itemsPerPage, handleDelete }) {
   const startIndex = (currentPage - 1) * itemsPerPage;
   const endIndex = startIndex + itemsPerPage;
   const studentsToDisplay = studentData.slice(startIndex, endIndex);
-
-  const handleDelete = async (id) => {
-    try {
-      const result = await Swal.fire({
-        title: 'Öğrenciyi Sil',
-        text: 'Bu öğrenciyi silmek istediğinize emin misiniz?',
-        icon: 'warning',
-        showCancelButton: true,
-        confirmButtonText: 'Sil',
-        cancelButtonText: 'İptal',
-      });
-  
-      if (result.isConfirmed) {
-        const response = await deleteStudent(id);
-        if (response.status === 200 && response.data.isSuccess) {
-          Swal.fire('Silindi', 'Öğrenci başarıyla silindi.', 'success');
-          fetchStudentData();
-        } else {
-          throw new Error(response.data.message || 'Silme işlemi başarısız.');
-        }
-      }
-    } catch (error) {
-      Swal.fire('Hata', error.response?.data?.error || error.message, 'error');
-    }
-  };
 
   return (
     <div className="container mx-auto p-4">
@@ -92,11 +67,7 @@ function Student() {
     try {
       const response = classID ? await getStudentClass(classID) : await getStudent();
       const { data } = response.data;
-      if (Array.isArray(data)) {
-        setStudentData(data);
-      } else {
-        setStudentData([]);
-      }
+      setStudentData(Array.isArray(data) ? data : []);
     } catch (error) {
       console.error('Error fetching student data:', error);
     } finally {
@@ -104,38 +75,58 @@ function Student() {
     }
   };
 
-  useEffect(() => {
-    fetchStudentData();
-  }, []);
+  const fetchClassData = async () => {
+    try {
+      const response = await getClass();
+      const { data } = response.data;
+      setClassData(Array.isArray(data) ? data : []);
+    } catch (error) {
+      console.error('Sınıf verileri alınırken bir hata oluştu:', error);
+    }
+  };
 
   useEffect(() => {
-    const fetchClassData = async () => {
-        try {
-            const response = await getClass();
-            const { data } = response.data;
-            setClassData(data);
-        } catch (error) {
-            console.error('Sınıf verileri alınırken bir hata oluştu:', error);
-        }
-    };
-
     fetchClassData();
+    fetchStudentData();
   }, []);
 
   useEffect(() => {
     const classID = selectedClass !== "default" ? classData.find(cls => cls.className === selectedClass)?.id : null;
     fetchStudentData(classID);
-}, [selectedClass, classData]);
+  }, [selectedClass, classData]);
 
-  const validClassData = Array.isArray(classData) ? classData : [];
+  const handleDelete = async (id) => {
+    try {
+      const result = await Swal.fire({
+        title: 'Öğrenciyi Sil',
+        text: 'Bu öğrenciyi silmek istediğinize emin misiniz?',
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonText: 'Sil',
+        cancelButtonText: 'İptal',
+      });
+  
+      if (result.isConfirmed) {
+        const response = await deleteStudent(id);
+        if (response.status === 200 && response.data.isSuccess) {
+          Swal.fire('Silindi', 'Öğrenci başarıyla silindi.', 'success');
+          fetchStudentData();
+        } else {
+          throw new Error(response.data.message || 'Silme işlemi başarısız.');
+        }
+      }
+    } catch (error) {
+      Swal.fire('Hata', error.response?.data?.error || error.message, 'error');
+    }
+  };
 
   const handleSearchChange = (e) => {
     setSearchQuery(e.target.value);
   };
 
-  const filteredStudents = Array.isArray(studentData) ? studentData.filter((student) =>
+  const filteredStudents = studentData.filter((student) =>
     (student.fullName || "").toLowerCase().includes(searchQuery.toLowerCase())
-  ) : [];
+  );
 
   const totalPages = Math.ceil(filteredStudents.length / itemsPerPage);
 
@@ -166,13 +157,13 @@ function Student() {
               <FontAwesomeIcon icon={faFilter} className="text-indigo-500 mr-2" />
               <select value={selectedClass} onChange={(e) => setSelectedClass(e.target.value)} className="outline-none bg-transparent">
                 <option value="default">Tüm Sınıflar</option>
-                {validClassData.map(cls => (
+                {classData.map(cls => (
                   <option key={cls.id} value={cls.className}>{cls.className}</option>
                 ))}
               </select>
             </div>
           </div>
-          <StudentData studentData={filteredStudents} currentPage={currentPage} itemsPerPage={itemsPerPage} setStudentData={setStudentData} fetchStudentData={fetchStudentData} />
+          <StudentData studentData={filteredStudents} currentPage={currentPage} itemsPerPage={itemsPerPage} handleDelete={handleDelete} />
           <div className="flex justify-center mt-4">
             {totalPages > 1 && currentPage > 1 && (
               <button

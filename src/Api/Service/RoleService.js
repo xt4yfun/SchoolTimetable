@@ -14,3 +14,7 @@ export const deleteRole = (ID) => {
 export const getAll = () => {
     return axiosManager.get(API_ENDPOINTS.ROLE.GET);
 };
+
+export const getRoleByName = (name) => {
+    return axiosManager.get(`${API_ENDPOINTS.ROLE.GETNAME}?name=${name}`);
+};

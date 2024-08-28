@@ -92,7 +92,7 @@ function AddStudent() {
   };
 
   return (
-    <div style={{ width: '900px' }} className="shadow-md flex-row px-1 mt-5 items-center pt-2 pb-2 mb-2 justify-center rounded-lg ml-10 bg-white">
+    <div className="shadow-md flex-row  w-11/12  px-1 mt-5 items-center pt-2 pb-2 mb-2 justify-center rounded-lg ml-10 bg-white">
       <h2 className="text-2xl font-semibold mb-4 text-center hover:text-indigo-500">Öğrenci Ekle</h2>
       <form onSubmit={handleSubmit} className="space-y-4 w-full p-1">
         <div className="flex flex-col">

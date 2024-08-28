@@ -1,9 +1,12 @@
 import React, { useState } from "react";
 import { useNavigate } from 'react-router-dom';
-import { register } from '../../Api/Service/LoginService'; // API servisini içe aktarıyoruz
+import { register } from '../Api/Service/LoginService'; 
 
 function Register() {
     const navigate = useNavigate();
+
+    const [firstName, setFirstName] = useState('');
+    const [lastName, setLastName] = useState('');
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [confirmPassword, setConfirmPassword] = useState('');
@@ -19,14 +22,20 @@ function Register() {
 
         try {
             const response = await register({
+                firstName,
+                lastName,
                 email,
                 password,
             });
 
-            if (response.IsSuccess) {
-                navigate('/Login');
+            if (response.data.token) {
+                // Token ve expiration bilgilerini sessionStorage'a kaydet
+                sessionStorage.setItem('authToken', response.data.token);
+                sessionStorage.setItem('tokenExpiration', response.data.expiration);
+
+                // Başarılı kayıt sonrası kullanıcıyı giriş sayfasına yönlendir
+                navigate('/Admin');
             } else {
-                // API'den dönen hataları göster
                 alert(response.message || "Kayıt başarısız.");
             }
         } catch (error) {
@@ -52,6 +61,26 @@ function Register() {
                                 Hesap Oluştur
                             </h1>
                             <form onSubmit={handleSubmit}>
+                                <label className="block text-sm">
+                                    <span className="text-gray-700">Ad</span>
+                                    <input
+                                        className="block text-sm mt-1 p-2 border rounded w-full focus:border-purple-400 focus:outline-none focus:shadow-outline-purple form-input"
+                                        placeholder="Ad"
+                                        value={firstName}
+                                        onChange={(e) => setFirstName(e.target.value)}
+                                        required
+                                    />
+                                </label>
+                                <label className="block text-sm">
+                                    <span className="text-gray-700">Soyad</span>
+                                    <input
+                                        className="block text-sm mt-1 p-2 border rounded w-full focus:border-purple-400 focus:outline-none focus:shadow-outline-purple form-input"
+                                        placeholder="Soyad"
+                                        value={lastName}
+                                        onChange={(e) => setLastName(e.target.value)}
+                                        required
+                                    />
+                                </label>
                                 <label className="block text-sm">
                                     <span className="text-gray-700">E-Posta</span>
                                     <input

@@ -70,6 +70,7 @@ const API_ENDPOINTS = {
       ADD: `${BASE_URL}${process.env.REACT_APP_ROLE_ENDPOINT}`,
       DELETE: `${BASE_URL}${process.env.REACT_APP_ROLE_ENDPOINT}`,
       GET: `${BASE_URL}${process.env.REACT_APP_ROLE_ENDPOINT}`,
+      GETNAME: `${BASE_URL}${process.env.REACT_APP_ROLE_ENDPOINT}/getName`,
     },
     ROLEUSER: {
       ADD: `${BASE_URL}${process.env.REACT_APP_ROLEUSER_ENDPOINT}`,
